@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: react-ros-k8s
+  labels:
+    app: react-ros-k8s
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: react-ros-k8s
+
+  template:
+    metadata:
+      labels:
+        app: react-ros-k8s
+
+    spec:
+      containers:
+        - name: react-ros-k8s
+          image: vishal6363/react-ros-k8s:latest
+
+          ports:
+            - containerPort: 80
+
+          imagePullPolicy: Always
